@@ -19,6 +19,33 @@ and some other information
 2. To display the IP address for your personal purposes
 3. more
 
+# Install 
+
+```
+git clone https://github.com/moayad-star/IP-info.git
+```
+```
+cd IP-info
+```
+```
+pip install -r requirements.txt
+```
+```
+python3 IP-info.py
+```
+
+`for update`
+
+```
+python3 update.py
+```
+```
+cd
+```
+```
+cd IP-info
+```
+
 ## Note
 
 This tool works on a website called iplocation 
