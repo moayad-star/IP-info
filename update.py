@@ -1,16 +1,43 @@
-from os import system
+import subprocess
+
 import requests
-try:
+from colorama import Back, init as colorama_init
+from requests.exceptions import ConnectTimeout, ConnectionError, HTTPError, \
+    ReadTimeout
+
+
+def main():
+    colorama_init(autoreset=True)
+
     try:
-        test_connect = str(requests.get("http://www.github.com/moayad-star/IP-info"))
-        if test_connect == "<Response [404]>":
-            exit("\033[;41;mSorry, the project does not exist\033[;40;m\n\033[;41;mit may have been deleted :(      \033[;40;m")
-        if test_connect == "<Response [200]>":
-            print("\033[;42;mConnection status: good\033[;40;m")
-    except (requests.exceptions.ConnectTimeout,requests.exceptions.ConnectionError,requests.exceptions.ReadTimeout):
-        exit("\033[;41;mYou are offline !\033[;40;m")
-    print("\nUpdates are being downloading...\n\n")
-    system("apt upgrade -y ; cd .. ; rm -rif IP-info ; git clone https://github.com/moayad-star/IP-info.git")
-    print("\033[;42;mUpdated successfully\033[;40;m")
-except KeyboardInterrupt:
-    exit("\nExit...")
+        status_code = requests.get(
+            "https://github.com/moayad-star/IP-info").status_code
+        if status_code == 404:
+            print(
+                Back.RED
+                + "Sorry, the project does not exist\nIt may have been deleted :("
+            )
+            exit(1)
+
+        if status_code != 200:
+            raise HTTPError(
+                f"Unexpected response code: {status_code}")
+
+        print(Back.GREEN + "Connection status: good")
+    except (
+            ConnectTimeout,
+            ConnectionError,
+            ReadTimeout,
+    ):
+        print(Back.RED + "You are offline!")
+        exit(1)
+    except HTTPError as e:
+        print(Back.RED + str(e))
+        exit(1)
+
+    print("\nUpdating the repo...")
+    subprocess.run(["git", "pull"])
+    print(Back.GREEN + "Updated successfully!")
+
+
+main()
