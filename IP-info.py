@@ -1,18 +1,20 @@
 # Modules
-import os
 import mechanicalsoup
 import requests
 
+from colorama import Back, init as colorama_init
+
+colorama_init(autoreset=True)
 
 # Color
-green = "\033[;32;m"
-red = "\033[;31;m"
+green = Back.GREEN
+red = Back.RED
 
 
 # Test network
 try:
-    requests.get("https://www.iplocation.net/",timeout=5)
-except (requests.exceptions.ConnectTimeout,requests.exceptions.ConnectionError,requests.exceptions.ReadTimeout,requests.exceptions.ChunkedEncodingError):
+    requests.get("https://www.iplocation.net/", timeout=5)
+except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError, requests.exceptions.ReadTimeout, requests.exceptions.ChunkedEncodingError):
     exit(f"{red} You are offline!\n\n")
 
 
@@ -44,11 +46,8 @@ print(f"""
  {red}│{green}   https://www.github.com/moayad-star   {red}│
  {red}└{'─'*40}┘
 
-
-{red}IP4: {green}{IP4}
-{red}IP6: {green}{IP6}
-{red}ISP: {green}{ISP}
-{red}Location: {green}{Location}
-
-
+ {red}IP4: {green}{IP4}
+ {red}IP6: {green}{IP6}
+ {red}ISP: {green}{ISP}
+ {red}Location: {green}{Location}
 """)
