@@ -1,5 +1,5 @@
 # Modules
-import os
+
 import mechanicalsoup
 import requests
 
@@ -40,8 +40,8 @@ print(f"""
 
  {red}┌{'─'*40}┐
  {red}│{green}                IP-info                 {red}│
- {red}│{green}         Create by Moayad Ahmed         {red}│
- {red}│{green}   https://www.github.com/moayad-star   {red}│
+ {red}│{green}         Create by {red}Moayad Ahmed         │
+ {red}│{green}   https://www.github.com/{red}moayad-star   │
  {red}└{'─'*40}┘
 
 
