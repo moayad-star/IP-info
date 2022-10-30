@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Author-moayad--star-orange">
+  <img src="https://img.shields.io/badge/Open%20Source-Yes-cyan?style=flat-square">
+  <img src="https://img.shields.io/badge/Written%20In-Python-blue?style=flat-square">
+</p>
 # IP-info
 
 ![IP-info](https://user-images.githubusercontent.com/60769512/192950228-fb4ed3ac-cd59-47f9-a685-00ab86c0778d.jpg)
